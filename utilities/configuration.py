@@ -1,6 +1,19 @@
 HEADERS = {
+    "Accept": "application/json",
     "Content-Type": "application/json"
-                    'Authorization: Token token="YOUR_APP_TOKEN"'
 }
 
-API_KEY = "275a45d29bdc68d49fe2fdb4db7d1380"
+BODY = {
+    "firstname": "John",
+    "lastname": "DOE",
+    "totalprice": "999",
+    "depositpaid": "true",
+    "bookingdates": {
+        "checkin": "2020-01-01",
+        "checkout": "202021-01-01"
+    },
+    "additionalneeds": "NONAME"
+}
+
+
+BASE_URL = "https://restful-booker.herokuapp.com/booking"
