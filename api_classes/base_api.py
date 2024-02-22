@@ -19,5 +19,11 @@ class BaseAPI:
     def post(self, url, body, headers=None):
         if headers is None:
             headers = self.__headers
-        response = self.__request.post(f"{self.__base_url}/{url}", headers=headers, data=body)
+        response = self.__request.put(f"{self.__base_url}/{url}", headers=headers, data=body)
+        return response
+
+    def put(self, url, body, headers=None):
+        if headers is None:
+            headers = self.__headers
+        response = self.__request.put(f"{self.__base_url}/{url}", headers=headers, data=body)
         return response

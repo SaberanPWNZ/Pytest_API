@@ -3,7 +3,7 @@ from selenium import webdriver
 
 from api_classes.main_api import BookingAPI
 from api_classes.response_classes.response import ResponseData
-
+from utilities.configuration import HEADERS, BODY, UPDATED_BODY
 
 
 @pytest.fixture
@@ -24,15 +24,15 @@ def test_open_url():
 
 @pytest.fixture()
 def test_post():
-    request = BookingAPI()
     body_json = ResponseData().get_json()
-    create_new_book = request.post_create_booking(body=body_json)
+    create_new_book = BookingAPI().post_create_booking(body=body_json)
     return create_new_book
 
 
 @pytest.fixture
-def test_get_send_wrong_cookies(test_open_url):
-    pass
-
-
+def test_update():
+    request = BookingAPI()
+    response = request.patch_data_booking(booking_id=2, headers=HEADERS, body=UPDATED_BODY)
+    #response_json = ResponseData(**response.json())
+    return response.status_code
 

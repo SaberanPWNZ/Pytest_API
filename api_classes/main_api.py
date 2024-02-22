@@ -16,3 +16,7 @@ class BookingAPI(BaseAPI):
     def post_create_booking(self, body):
         post_request = self.post(url=f"{self.booking_url}", headers=None, body=body)
         return post_request
+
+    def patch_data_booking(self, booking_id, body, headers=None):
+        patch_response = self.put(url=f'{self.booking_url}/{booking_id}', body=body, headers=headers)
+        return patch_response
