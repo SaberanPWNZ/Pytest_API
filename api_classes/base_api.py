@@ -1,5 +1,4 @@
 import requests
-
 from utilities.configuration import HEADERS
 
 
@@ -16,14 +15,14 @@ class BaseAPI:
         response = self.__request.get(f"{self.__base_url}/{url}", headers=headers)
         return response
 
-    def post(self, url, body, headers=None):
+    def post(self, url, json=None, data=None, headers=None):
         if headers is None:
             headers = self.__headers
-        response = self.__request.put(f"{self.__base_url}/{url}", headers=headers, data=body)
+        response = self.__request.post(f"{self.__base_url}/{url}", headers=headers, json=json, data=data)
         return response
 
-    def put(self, url, body, headers=None):
+    def patch(self, url, data, headers=None, cookies=None, ):
         if headers is None:
             headers = self.__headers
-        response = self.__request.put(f"{self.__base_url}/{url}", headers=headers, data=body)
+        response = self.__request.patch(f"{self.__base_url}/{url}", headers=headers, data=data, cookies=cookies, )
         return response

@@ -25,14 +25,8 @@ def test_open_url():
 @pytest.fixture()
 def test_post():
     body_json = ResponseData().get_json()
-    create_new_book = BookingAPI().post_create_booking(body=body_json)
+    create_new_book = BookingAPI().post_create_booking(json=BODY, data=None)
     return create_new_book
 
 
-@pytest.fixture
-def test_update():
-    request = BookingAPI()
-    response = request.patch_data_booking(booking_id=2, headers=HEADERS, body=UPDATED_BODY)
-    #response_json = ResponseData(**response.json())
-    return response.status_code
 

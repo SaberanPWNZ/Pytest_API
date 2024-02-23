@@ -1,9 +1,15 @@
+from utilities.utilities_generating_random_data import User
+
 HEADERS = {
     "Accept": "application/json",
     "Content-Type": "application/json",
     'Cookie': 'token=abc123'
+
 }
 
+COOKIES = {'Cookie': 'token=abc123'}
+AUTH_DATA = {"username": "admin",
+             "password": "password123"}
 WRONG_HEADERS = [
     ({"accept": "application/json", "Content-Type": "application/json"}),
     ({"ACCEPT": "application/json", "Content-Type": "application/json"}),
@@ -39,4 +45,4 @@ UPDATED_BODY = {
     "additionalneeds": "UPDATE"
 }
 
-BASE_URL = "https://restful-booker.herokuapp.com/booking"
+WRONG_AUTH_DATA = [(User().new_user(),) for _ in range(1, 16)]

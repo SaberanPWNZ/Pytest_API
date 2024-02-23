@@ -1,7 +1,4 @@
-import random
-
 from api_classes.base_api import BaseAPI
-from api_classes.response_classes.response import ResponseData
 
 
 class BookingAPI(BaseAPI):
@@ -13,10 +10,10 @@ class BookingAPI(BaseAPI):
         response = self.get(f'{self.booking_url}/{booking_id}', headers=headers)
         return response
 
-    def post_create_booking(self, body):
-        post_request = self.post(url=f"{self.booking_url}", headers=None, body=body)
+    def post_create_booking(self, json, data):
+        post_request = self.post(url=f"{self.booking_url}", headers=None, json=json, data=data)
         return post_request
 
-    def patch_data_booking(self, booking_id, body, headers=None):
-        patch_response = self.put(url=f'{self.booking_url}/{booking_id}', body=body, headers=headers)
+    def patch_data_booking(self, booking_id, data, headers=None, cookies=None):
+        patch_response = self.patch(f'{self.booking_url}/{booking_id}', data=data, headers=headers, cookies=cookies)
         return patch_response
